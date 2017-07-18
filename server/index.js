@@ -2,12 +2,23 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const volleyball = require('volleyball');
-
+const bodyParser = require('body-parser');
+const PORT = process.env.PORT || 3000
 app.use(volleyball);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 //serve up static files
 app.use(express.static(path.resolve(__dirname, '..', 'client')));
 app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
+// app.use(express.static(path.resolve(__dirname, '..', 'client', 'styles', 'mainSheet', 'main.css')));
+
+// app.get('/client/styles/mainSheet', function (request, response){
+//   console.log("I HIT DA STYLES");
+//   response.sendFile(path.resolve(__dirname, '..', 'styles', 'mainSheet', 'main.css'))
+// });
+// app.use(express.static(path.resolve(__dirname, 'client', 'styles', 'mainSheet', 'main.css')));
+
 
 app.use(function (err, req, res, next) {
   console.error(err);
@@ -22,7 +33,6 @@ app.get('*', function (request, response) {
   response.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'))
 });
 
-//listen on port 3000
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Rockin' out on port 3000 homie");
+app.listen(PORT, function () {
+  console.log("Rockin out on port " + PORT + " homie");
 });
