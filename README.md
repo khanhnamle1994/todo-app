@@ -5,7 +5,7 @@ A simple todo application that consumes the [Cosmic JS API](https://cosmicjs.com
 1. Go to [Cosmic JS](https://cosmicjs.com) and create a new Bucket to store your todos.
 2. Download the app:
 ```
-git clone https://github.com/cosmicjs/todo-app
+git clone https://github.com/khanhnamle1994/todo-app
 cd todo-app
 yarn
 ```
